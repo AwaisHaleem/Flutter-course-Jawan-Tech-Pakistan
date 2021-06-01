@@ -8,21 +8,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Container(
-          child: Row(
-            children: [
-              Text('1st element'),
-              SizedBox(width: 10,),
-              Text('1st element'),
-              Text('1st element'),
-              Text('1st element'),
-              Text('1st element'),
-            ],
-          )
-        ),
+            child: Row(
+          mainAxisAlignment: MainAxisAlignment
+              .spaceEvenly, // try all methods of MainAxisAlignment class
+          children: [
+            Text('1st element'),
+            SizedBox(
+              width: 10,
+            ),
+            Text('2nd element'),
+            Text('3rd element'),
+          ],
+        )),
       ),
-      
     );
   }
 }
