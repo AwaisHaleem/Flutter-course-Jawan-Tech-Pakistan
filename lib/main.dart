@@ -10,18 +10,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          child: Column(
+          child: Row(
             children: [
-              Text('1st line'),
-              SizedBox(height: 10,),
-              Text('2nd line'),
-              Text('3rd line'),
-              SizedBox(height: 10,),
-              Text('4th line'),
-              Text('5th line'),
-              Text('6th line'),
+              Text('1st element'),
+              SizedBox(width: 10,),
+              Text('1st element'),
+              Text('1st element'),
+              Text('1st element'),
+              Text('1st element'),
             ],
-          ),
+          )
         ),
       ),
       
