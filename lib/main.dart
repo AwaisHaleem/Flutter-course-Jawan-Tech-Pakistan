@@ -10,19 +10,87 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Container(
-            child: Row(
-          mainAxisAlignment: MainAxisAlignment
-              .spaceEvenly, // try all methods of MainAxisAlignment class
-          children: [
-            Text('1st element'),
-            SizedBox(
-              width: 10,
+        body: SingleChildScrollView(
+                  child: Container(
+              child: Center(
+            child: Column(
+              children: [
+                Center(
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.purple,
+                  ),
+                
+                ),
+                SizedBox(height: 10,),
+                Center(
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.purple,
+                  )
+                ),
+                SizedBox(height: 10,),
+                Center(
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.purple,
+                  )
+                ),
+                SizedBox(height: 10,),
+                Center(
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.purple,
+                  )
+                ),
+                SizedBox(height: 10,),
+                Center(
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.purple,
+                  )
+                ),
+                SizedBox(height: 10,),
+                Center(
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.purple,
+                  )
+                ),
+                SizedBox(height: 10,),
+                Center(
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.purple,
+                  )
+                ),
+                SizedBox(height: 10,),
+                Center(
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.purple,
+                  )
+                ),
+                SizedBox(height: 10,),
+                Center(
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.purple,
+                  )
+                )
+              ],
             ),
-            Text('2nd element'),
-            Text('3rd element'),
-          ],
-        )),
+          )),
+        ),
       ),
     );
   }
