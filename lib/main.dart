@@ -10,10 +10,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          height: 200,
-          width: 200,
-          color: Colors.blue,
-          child: Text("Container"),
+          child: Column(
+            children: [
+              Text('1st line'),
+              SizedBox(height: 10,),
+              Text('2nd line'),
+              Text('3rd line'),
+              SizedBox(height: 10,),
+              Text('4th line'),
+              Text('5th line'),
+              Text('6th line'),
+            ],
+          ),
         ),
       ),
       
