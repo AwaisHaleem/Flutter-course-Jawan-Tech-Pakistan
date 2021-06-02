@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jawan_tech_flutter_course/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -7,39 +8,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-            appBar: AppBar(
-              title: Center(child: Text('Login')),
-            ),
-            body: Center(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 100,
-                  ),
-                  Center(
-                    child: Container(
-                      height: 40,
-                      child: TextField(),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Center(
-                    child: Container(
-                      height: 30,
-                      child: TextField(),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  ElevatedButton(onPressed: () {}, child: Text('Login'))
-                ],
-              ),
-            )));
+    return MaterialApp(debugShowCheckedModeBanner: false, home: Home());
   }
 }
