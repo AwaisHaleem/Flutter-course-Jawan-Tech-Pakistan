@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jawan_tech_flutter_course/app.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -9,10 +10,14 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      color: Colors.purple,
-      height: MediaQuery.of(context).size.height * 0.5,
-      width: MediaQuery.of(context).size.width * 0.25,
+        body: Center(
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => App()));
+        },
+        child: Text('Button'),
+      ),
     ));
   }
 }
