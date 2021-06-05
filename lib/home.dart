@@ -11,26 +11,28 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(
-      children: [
-        ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Colors.green,
-            radius: 20,
-          ),
-          title: Text('Bilal'),
-          subtitle: Text('Hey!.....'),
-          trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text('04:09 pm'),
-              CircleAvatar(
-                backgroundColor: Colors.green[200],
-                radius: 10,
-              )
-            ],
-          ),
-        )
-      ],
+      children: [abc(), abc(), abc(), abc()],
     ));
   }
+}
+
+Widget abc() {
+  return ListTile(
+    leading: CircleAvatar(
+      backgroundColor: Colors.green,
+      radius: 20,
+    ),
+    title: Text('Bilal'),
+    subtitle: Text('Hey!.....'),
+    trailing: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Text('04:09 pm'),
+        CircleAvatar(
+          backgroundColor: Colors.green[200],
+          radius: 10,
+        )
+      ],
+    ),
+  );
 }
