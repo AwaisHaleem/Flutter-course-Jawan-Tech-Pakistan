@@ -10,14 +10,27 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => App()));
-        },
-        child: Text('Button'),
-      ),
+        body: Column(
+      children: [
+        ListTile(
+          leading: CircleAvatar(
+            backgroundColor: Colors.green,
+            radius: 20,
+          ),
+          title: Text('Bilal'),
+          subtitle: Text('Hey!.....'),
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text('04:09 pm'),
+              CircleAvatar(
+                backgroundColor: Colors.green[200],
+                radius: 10,
+              )
+            ],
+          ),
+        )
+      ],
     ));
   }
 }
