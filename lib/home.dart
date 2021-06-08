@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jawan_tech_flutter_course/app.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,29 +9,40 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: [abc(), abc(), abc(), abc()],
-    ));
+      body: ListView(
+        children: [
+          Container(
+            color: Colors.red,
+            height: 100,
+            child: Row(
+              children: [
+                Container(
+                  color: Colors.yellow,
+                  height: 100,
+                  width: 100,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('abs'),
+                      Row(
+                        children: [
+                          Text('abs'),
+                          Text('abs'),
+                        ],
+                      ),
+                      Text('abs'),
+                      Text('abs'),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
-}
-
-Widget abc() {
-  return ListTile(
-    leading: CircleAvatar(
-      backgroundColor: Colors.green,
-      radius: 20,
-    ),
-    title: Text('Bilal'),
-    subtitle: Text('Hey!.....'),
-    trailing: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Text('04:09 pm'),
-        CircleAvatar(
-          backgroundColor: Colors.green[200],
-          radius: 10,
-        )
-      ],
-    ),
-  );
 }
