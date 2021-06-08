@@ -6,43 +6,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List age = <String>["12", "35", "64", "22"];
+  List names = <String>['ali', 'ahmad', 'muaz', 'musa'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          Container(
-            color: Colors.red,
-            height: 100,
-            child: Row(
-              children: [
-                Container(
-                  color: Colors.yellow,
-                  height: 100,
-                  width: 100,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('abs'),
-                      Row(
-                        children: [
-                          Text('abs'),
-                          Text('abs'),
-                        ],
-                      ),
-                      Text('abs'),
-                      Text('abs'),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
-      ),
-    );
+        body: ListView.builder(
+            itemCount: names.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(names[index]),
+                subtitle: Text(age[index]),
+              );
+            }));
   }
 }
