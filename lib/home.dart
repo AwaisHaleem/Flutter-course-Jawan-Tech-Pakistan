@@ -11,16 +11,23 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: GridView.count(
-            crossAxisCount: 2,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            children: List.generate(names.length, (index) {
-              return Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.pink,
-                  child: Text(names[index]));
-            })));
+      appBar: AppBar(
+        title: Text('Drawer Example'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            Container(
+                color: Colors.yellow, child: DrawerHeader(child: Text('abs'))),
+            ListTile(
+              title: Text('budjet'),
+            ),
+            ListTile(
+              title: Text('budjet'),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
