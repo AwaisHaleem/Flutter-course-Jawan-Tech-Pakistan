@@ -8,22 +8,35 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  var text = '';
+  one() {
+    setState(() {
+      text = '1';
+    });
+  }
+
+  two() {
+    setState(() {
+      text = '2';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
-            centerTitle: true,
-            title: Text('Hello'),
-            bottom: TabBar(
-              unselectedLabelColor: Colors.black,
-              labelColor: Colors.white,
-              indicatorColor: Colors.red,
-              tabs: [Text('Login'), Text('Register')],
-            )),
-        body: TabBarView(
-          children: [Login(), Register()],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Text $text'),
+              SizedBox(height: 20),
+              ElevatedButton(onPressed: one, child: Text('make 1')),
+              SizedBox(height: 20),
+              ElevatedButton(onPressed: two, child: Text('make 2')),
+            ],
+          ),
         ),
       ),
     );
