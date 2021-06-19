@@ -1,56 +1,97 @@
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
-class Home extends StatefulWidget {
+class Calculator extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _CalculatorState createState() => _CalculatorState();
 }
 
-class _HomeState extends State<Home> {
-  List<dynamic> lst = [1, 2, 3, 4, 5, 6, 7, 8];
+class _CalculatorState extends State<Calculator> {
+  var result = '';
+
+  Widget btn(String textt) {
+    return ElevatedButton(
+        onPressed: () {
+          setState(() {
+            result += textt;
+          });
+        },
+        child: Text(textt));
+  }
+
+  clearr() {
+    setState(() {
+      result = '';
+    });
+  }
+
+  output() {
+    Parser p = Parser();
+    Expression exp = p.parse(result);
+    ContextModel cm = ContextModel();
+    double eval = exp.evaluate(EvaluationType.REAL, cm);
+    setState(() {
+      result = eval.toString();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Center(
-        child: Column(children: [
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            color: Colors.red,
-            height: 200,
-            width: 200,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            result,
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            color: Colors.red,
-            height: 200,
-            width: 200,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              btn('1'),
+              btn('2'),
+              btn('3'),
+              btn('4'),
+            ],
           ),
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            color: Colors.red,
-            height: 200,
-            width: 200,
+          SizedBox(
+            height: 10,
           ),
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            color: Colors.red,
-            height: 200,
-            width: 200,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              btn('5'),
+              btn('6'),
+              btn('7'),
+              btn('8'),
+            ],
           ),
-          GridView.count(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            crossAxisCount: 2,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20,
-            children: List.generate(lst.length, (index) {
-              return Container(
-                  color: Colors.amber,
-                  child: Center(child: Text('${lst[index]}')));
-            }),
-          )
-        ]),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              btn('9'),
+              btn('0'),
+              btn('+'),
+              btn('-'),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              btn('*'),
+              btn('/'),
+              ElevatedButton(onPressed: clearr, child: Text('clear')),
+              ElevatedButton(onPressed: output, child: Text('=')),
+            ],
+          ),
+        ],
       ),
-    ));
+    );
   }
 }
