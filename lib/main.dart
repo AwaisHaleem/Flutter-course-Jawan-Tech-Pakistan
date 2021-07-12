@@ -9,7 +9,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Calculator(),
+      title: 'Flutter Demo',
+      home: Scaffold(
+        body: Api(),
+      ),
     );
   }
 }
