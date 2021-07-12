@@ -7,21 +7,25 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  var result = '';
+  String result = "";
 
-  Widget btn(String textt) {
+  Widget btn(texttt) {
     return ElevatedButton(
         onPressed: () {
-          setState(() {
-            result += textt;
-          });
+          abc(texttt);
         },
-        child: Text(textt));
+        child: Text(texttt));
+  }
+
+  abc(texttt) {
+    setState(() {
+      result = result + texttt;
+    });
   }
 
   clearr() {
     setState(() {
-      result = '';
+      result = "";
     });
   }
 
@@ -30,6 +34,7 @@ class _CalculatorState extends State<Calculator> {
     Expression exp = p.parse(result);
     ContextModel cm = ContextModel();
     double eval = exp.evaluate(EvaluationType.REAL, cm);
+
     setState(() {
       result = eval.toString();
     });
@@ -38,60 +43,62 @@ class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        body: Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text(
-            result,
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          SizedBox(
+            height: 300,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              btn('1'),
-              btn('2'),
-              btn('3'),
-              btn('4'),
-            ],
+          Align(
+            alignment: Alignment.topRight,
+            child: Text(
+              "$result",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
           ),
           SizedBox(
-            height: 10,
+            height: 50,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              btn('5'),
-              btn('6'),
-              btn('7'),
-              btn('8'),
+              btn("1"),
+              btn("2"),
+              btn("3"),
+              btn("+"),
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              btn('9'),
-              btn('0'),
-              btn('+'),
-              btn('-'),
+              btn("4"),
+              btn("5"),
+              btn("6"),
+              btn("-"),
             ],
           ),
-          SizedBox(
-            height: 10,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              btn("7"),
+              btn("8"),
+              btn("9"),
+              btn("*"),
+            ],
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              btn('*'),
-              btn('/'),
-              ElevatedButton(onPressed: clearr, child: Text('clear')),
+              btn("0"),
               ElevatedButton(onPressed: output, child: Text('=')),
+              ElevatedButton(onPressed: clearr, child: Text('Clear')),
+              btn("/"),
             ],
           ),
         ],
       ),
-    );
+    ));
   }
 }
