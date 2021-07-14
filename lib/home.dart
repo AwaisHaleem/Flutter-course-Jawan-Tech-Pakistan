@@ -1,55 +1,40 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:jawan_tech_flutter_course/post.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Api extends StatefulWidget {
-  @override
-  _ApiState createState() => _ApiState();
-}
 
-class _ApiState extends State<Api> {
-  getUser() async {
-    var response =
-        await http.get(Uri.https('jsonplaceholder.typicode.com', 'users'));
-    var jsonData = jsonDecode(response.body);
-    var users = [];
-    for (var i in jsonData) {
-      UserModel user = UserModel(i['name'], i['username'], i['email']);
-      users.add(user);
-    }
-    return users;
-  }
+class Home extends StatelessWidget {
+    final Stream postStream =
+      FirebaseFirestore.instance.collection('posts').snapshots();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      child: FutureBuilder(
-        future: getUser(),
-        builder: (context, snapshot) {
-          if (snapshot.data == null) {
-            return Container(child: Text('Nothing in Api'));
-          } else
-            return ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (context, i) {
-                return ListTile(
-                  title: Text(snapshot.data[i].name),
-                  subtitle: Text(snapshot.data[i].email),
-                );
-              },
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: SafeArea(
+          child:StreamBuilder<QuerySnapshot>(
+          stream: postStream,
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasError) {
+              return Text('Something went wrong');
+            }
+
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Text("Loading");
+            }
+
+            return new ListView(
+              children: snapshot.data.docs.map((DocumentSnapshot document) {
+                Map data = document.data();
+                return Post(data: data,);
+              }).toList(),
             );
-        },
+          },
+        ),
+        ),
       ),
-    ));
+    );
   }
-}
-
-class UserModel {
-  var name;
-  var username;
-  var email;
-
-  UserModel(this.name, this.username, this.email);
 }
