@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1031752077562",
-    "project_id": "jawantechflutter",
-    "storage_bucket": "jawantechflutter.appspot.com"
+    "project_number": "685402520549",
+    "project_id": "flutter-class-f6167",
+    "storage_bucket": "flutter-class-f6167.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1031752077562:android:de9fa660a1da6feb23f943",
+        "mobilesdk_app_id": "1:685402520549:android:9af478e90c6a2d0e72cd0c",
         "android_client_info": {
           "package_name": "com.example.jawan_tech_flutter_course"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1031752077562-lqg07kobestm371ar4fsqe211l5hbiuf.apps.googleusercontent.com",
+          "client_id": "685402520549-6dqat3re41vprssmb70heq9asm3fde83.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCnpU-SBdZHjE_E03vD6vfNfDq9X6eij8A"
+          "current_key": "AIzaSyC9BKkd09ckC82hI4iYCB61QpmWTue44NQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1031752077562-lqg07kobestm371ar4fsqe211l5hbiuf.apps.googleusercontent.com",
+              "client_id": "685402520549-6dqat3re41vprssmb70heq9asm3fde83.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

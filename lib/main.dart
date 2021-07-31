@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jawan_tech_flutter_course/home.dart';
-import 'package:jawan_tech_flutter_course/login.dart';
-import 'package:jawan_tech_flutter_course/register.dart';
+import 'register.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() {
@@ -15,26 +13,37 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
+      // Initialize FlutterFire:
       future: _initialization,
       builder: (context, snapshot) {
+        // Check for errors
         if (snapshot.hasError) {
-          return Container();
-        }
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          return MaterialApp(
-            title: 'User Authentication',
-            home: Login(),
-            routes: {
-              '/login': (context) => Login(),
-              '/Register': (context) => Register(),
-              '/home': (context) => Home(),
-            },
+          return Container(
+            child: Text('Something Wrong'),
           );
         }
 
-        return Container();
+        // Once complete, show your application
+        if (snapshot.connectionState == ConnectionState.done) {
+          return MaterialApp(
+            home: Register(),
+          );
+        }
+
+        // Otherwise, show something whilst waiting for initialization to complete
+        return Container(
+          child: Text('Loading'),
+        );
       },
     );
   }
 }
+
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Register(),
+//     );
+//   }
+// }
