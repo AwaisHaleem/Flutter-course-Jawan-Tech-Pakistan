@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Register extends StatelessWidget {
   @override
@@ -10,16 +11,18 @@ class Register extends StatelessWidget {
 
     void register() async {
       FirebaseAuth auth = FirebaseAuth.instance;
+      FirebaseFirestore db = FirebaseFirestore.instance;
       final String username = nameController.text;
       final String email = emailController.text;
       final String password = passwordController.text;
-      try {} catch (e) {
-        print(e);
-      }
 
       try {
-        await auth.createUserWithEmailAndPassword(
+        final UserCredential users = await auth.createUserWithEmailAndPassword(
             email: email, password: password);
+        await db.collection('users').doc(users.user.uid).set(
+          {"Email": email, "UserName": username},
+        );
+        print('User is registered');
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           print('The password provided is too weak.');
