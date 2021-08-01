@@ -21,7 +21,7 @@ class Login extends StatelessWidget {
             email: email, password: password);
         final DocumentSnapshot snapshot =
             await db.collection('users').doc(user.user.uid).get();
-        final data = snapshot.data();
+        
 
         Navigator.of(context).pushNamed('\home');
       } on FirebaseAuthException catch (e) {
