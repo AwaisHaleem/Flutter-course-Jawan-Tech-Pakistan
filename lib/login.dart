@@ -21,15 +21,17 @@ class Login extends StatelessWidget {
             email: email, password: password);
         final DocumentSnapshot snapshot =
             await db.collection('users').doc(user.user.uid).get();
-        
 
         Navigator.of(context).pushNamed('\home');
-      } on FirebaseAuthException catch (e) {
-        if (e.code == 'user-not-found') {
-          print('No user found for that email.');
-        } else if (e.code == 'wrong-password') {
-          print('Wrong password provided for that user.');
-        }
+      } catch (e) {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                content: Text(e.message),
+              );
+            });
+        print(e.message);
       }
     }
 
