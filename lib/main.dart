@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jawan_tech_flutter_course/login.dart';
 import 'register.dart';
+import 'package:jawan_tech_flutter_course/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() {
@@ -26,7 +28,12 @@ class MyApp extends StatelessWidget {
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
-            home: Register(),
+            home: Login(),
+            routes: {
+              '\login': (context) => Login(),
+              '\register':(context)=> Register(),
+              '\home' : (context)=> Home(),
+            },
           );
         }
 
