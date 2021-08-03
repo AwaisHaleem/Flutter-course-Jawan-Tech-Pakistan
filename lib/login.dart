@@ -21,8 +21,9 @@ class Login extends StatelessWidget {
             email: email, password: password);
         final DocumentSnapshot snapshot =
             await db.collection('users').doc(user.user.uid).get();
+        final data = snapshot.data();
 
-        Navigator.of(context).pushNamed('\home');
+        Navigator.of(context).pushNamed('\home', arguments: data);
       } catch (e) {
         showDialog(
             context: context,
