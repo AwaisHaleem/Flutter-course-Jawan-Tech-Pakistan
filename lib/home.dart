@@ -44,17 +44,17 @@ class _HomeState extends State<Home> {
         await ref.putFile(file);
 
         String downloadedUrl = await ref.getDownloadURL();
+        
         FirebaseFirestore db = FirebaseFirestore.instance;
-        print('This is imagae path ' + imagePath);
-        print('This is download url path ' + downloadedUrl);
 
         await db.collection('Posts').add(
           {'title': title, 'description': description, 'url': downloadedUrl},
         );
-        print('File uploaded successfully');
       } catch (e) {
         print(e.message);
       }
+      titleController.clear();
+      descriptionController.clear();
     }
 
     return Scaffold(
@@ -102,6 +102,8 @@ class _HomeState extends State<Home> {
                         children:
                             snapshot.data.docs.map((DocumentSnapshot document) {
                           Map data = document.data();
+                          String id = document.id;
+                          data['id'] = id;
 
                           return Post(
                             data: data,
@@ -110,16 +112,6 @@ class _HomeState extends State<Home> {
                       );
                     },
                   ),
-
-                  // // new ListView(
-                  // //   children:
-                  // //       snapshot.data.docs.map((DocumentSnapshot document) {
-                  // //     Map data = document.data();
-                  // //     return Post(
-                  // //       data: data,
-                  // //     );
-                  //   }).toList(),
-                  // ),
                 ),
               ),
             ],
