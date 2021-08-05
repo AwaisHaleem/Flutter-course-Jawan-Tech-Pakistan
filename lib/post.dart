@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:jawan_tech_flutter_course/editpost.dart';
+import 'package:jawan_tech_flutter_course/editDailogue.dart';
 
 class Post extends StatelessWidget {
   final Map data;
@@ -17,11 +17,11 @@ class Post extends StatelessWidget {
       }
     }
 
-    void editPost() {
+    void editDialogue() {
       showDialog(
           context: context,
           builder: (BuildContext context) {
-            return EditPost(data: data,);
+            return EditDialogue(data: data);
           });
     }
 
@@ -50,7 +50,7 @@ class Post extends StatelessWidget {
                 width: 10,
               ),
               ElevatedButton(
-                onPressed: editPost,
+                onPressed: editDialogue,
                 child: Icon(Icons.edit),
               ),
             ],
